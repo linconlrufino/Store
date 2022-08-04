@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Domain", "Store.Domain\Store.Domain.csproj", "{727FD684-885A-4799-B233-03197AEDF903}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests", "Store.Tests\Store.Tests.csproj", "{1905708C-3794-4EE1-A6DB-3A9D131583ED}"
-	ProjectSection(ProjectDependencies) = postProject
-		{727FD684-885A-4799-B233-03197AEDF903} = {727FD684-885A-4799-B233-03197AEDF903}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

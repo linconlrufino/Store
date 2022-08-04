@@ -1,3 +1,5 @@
+using Store.Domain.Entities;
+
 namespace Store.Tests.Domain
 {
 
@@ -7,7 +9,13 @@ namespace Store.Tests.Domain
         [Trait("Category", "Domain")]
         public void Dado_um_novo_pedido_valido_ele_deve_gerar_um_numero_com_8_caracteres()
         {
-            Assert.True(false);
+            var customer = new Customer("Vader", "vader@deathstar.com");
+            var deliveryFee = 15;
+            var discount = new Discount(0, DateTime.Now);
+            var newOrder = new Order(customer, deliveryFee, discount);
+            var orderNumberLenght = newOrder.Number.Length;
+
+            Assert.Equal(orderNumberLenght, 8);
         }
 
         [Fact]
