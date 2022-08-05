@@ -123,9 +123,9 @@ public class OrderTests
     {
         var order = new Order(customer, 10, discount);
 
-        order.AddItem(product, 4);
+        order.AddItem(product, 5);
 
-        Assert.Equal(60, order.Total());
+        Assert.Equal(50, order.Total());
     }
 
     [Fact]
