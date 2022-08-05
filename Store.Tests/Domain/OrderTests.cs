@@ -98,7 +98,7 @@ public class OrderTests
     [Trait("Category", "Domain")]
     public void Dado_um_desconto_expirado_o_valor_do_pedido_deve_ser_60()
     {
-        var expiredDiscount = new Discount(5,DateTime.Now.AddDays(-5));
+        var expiredDiscount = new Discount(5, DateTime.Now.AddDays(-5));
         var order = new Order(customer, 10, expiredDiscount);
 
         order.AddItem(product, 5);
@@ -132,7 +132,11 @@ public class OrderTests
     [Trait("Category", "Domain")]
     public void Dado_uma_taxa_de_entrega_de_10_o_valor_do_pedido_deve_ser_60()
     {
-        Assert.True(false);
+        var order = new Order(customer, 10, null);
+
+        order.AddItem(product, 5);
+
+        Assert.Equal(60, order.Total());
     }
 
     [Fact]
