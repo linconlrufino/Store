@@ -143,6 +143,9 @@ public class OrderTests
     [Trait("Category", "Domain")]
     public void Dado_um_pedido_sem_cliente_o_mesmo_deve_ser_invalido()
     {
-        Assert.True(false);
+
+        var order = new Order(null, 10, null);
+
+        Assert.False(order.IsValid);
     }
 }
