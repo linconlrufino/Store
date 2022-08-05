@@ -121,7 +121,11 @@ public class OrderTests
     [Trait("Category", "Domain")]
     public void Dado_um_desconto_de_10_o_valor_do_pedido_deve_ser_50()
     {
-        Assert.True(false);
+        var order = new Order(customer, 10, discount);
+
+        order.AddItem(product, 4);
+
+        Assert.Equal(60, order.Total());
     }
 
     [Fact]
