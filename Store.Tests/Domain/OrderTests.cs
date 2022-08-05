@@ -1,32 +1,39 @@
 using Store.Domain.Entities;
+using Store.Domain.Enums;
 
 namespace Store.Tests.Domain;
 
 public class OrderTests
 {
     private Customer customer;
+    private Product product;
+    private Discount discount;
 
     public OrderTests()
     {
         customer = new Customer("Vader", "vader@deathstar.com");
+        product = new Product("Produto", 10, true);
+        discount = new Discount(10, DateTime.Now.AddDays(5));
     }
 
     [Fact]
     [Trait("Category", "Domain")]
     public void Dado_um_novo_pedido_valido_ele_deve_gerar_um_numero_com_8_caracteres()
     {
-        var newOrder = new Order(customer, 0, null);
+        var order = new Order(customer, 0, discount);
 
-        var orderNumberLength = newOrder.Number.Length;
+        var orderNumberLength = order.Number.Length;
 
-        Assert.Equal(orderNumberLength, 8);
+        Assert.Equal(8, orderNumberLength);
     }
 
     [Fact]
     [Trait("Category", "Domain")]
     public void Dado_um_novo_pedido_seu_status_deve_ser_aguardando_pagamento()
     {
-        Assert.True(false);
+        var order = new Order(customer, 0, discount);
+
+        Assert.Equal(EOrderStatus.WaitingPayment, order.Status);
     }
 
     [Fact]
