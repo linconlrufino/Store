@@ -4,10 +4,11 @@ using Store.Domain.Commands.Interfaces;
 using Store.Domain.Entities;
 using Store.Domain.Handlers.Interfaces;
 using Store.Domain.Repositories;
+using Store.Domain.Utils;
 
 namespace Store.Domain.Handlers;
 
-internal class OrderHandler :
+public class OrderHandler :
     Notifiable<Notification>,
     IHandler<CreateOrderCommand>
 {
@@ -46,7 +47,7 @@ internal class OrderHandler :
 
         var discount = discountRepository.Get(command.PromoCode);
 
-        var products = productRepository.Get(command.Items.Select(x => x.Product)).ToList();
+        var products = productRepository.Get(ExtractGuids.Extract(command.Items).ToList());
         var order = new Order(customer, deliveryFee, discount);
         foreach (var item in command.Items)
         {
