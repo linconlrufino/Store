@@ -2,7 +2,7 @@
 
 namespace Store.Domain.Repositories;
 
-public interface ICustumerRepository
+public interface ICustomerRepository
 {
     Customer Get(string document);
 }
